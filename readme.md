@@ -77,7 +77,7 @@
 
 - Install Globals
   ```
-  npm install -g typescript -g nodemon -g concurrently
+  npm install  typescript  nodemon  concurrently
   ```
 - Navigate to the api folder
 - Run
