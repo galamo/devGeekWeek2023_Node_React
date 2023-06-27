@@ -1,21 +1,17 @@
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv"
-import axios from "axios";
+import productsRouter from "./products";
+import usersRouter from "./users"
+import { requestStarted } from "./middleware/requestStarted";
+import { addRequestId } from "./middleware/addRequestId";
 dotenv.config()
 // const express = require("express")
 const app = express()
 
+app.use(requestStarted)
+app.use(addRequestId)
 app.get("/health-check", (req: Request, res: Response, next: NextFunction) => {
     res.send("Api is running!")
-})
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-    console.log(`${new Date().toISOString()}: => Request Started ${req.path}`)
-    next()
-})
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.setHeader("x-request-id", Date.now())
-    next()
 })
 app.use((req: Request, res: Response, next: NextFunction) => {
     const { apiKey } = req.query
@@ -26,21 +22,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
         res.status(401).send("User is not authorized!")
     }
 })
-
-app.get("/products", async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const result = await axios.get("https://dummyjson.com/products")
-        res.json({ products: result?.data?.products })
-    } catch (error) {
-        res.send("something went wrong")
-    }
-})
-app.get("/users", (req: Request, res: Response, next: NextFunction) => {
-    for (let index = 0; index < 9999999999; index++) {
-    }
-    res.send("Users..!")
-})
-
+app.use("/products", productsRouter)
+app.use("/users", usersRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(`Api is running on ${process.env.PORT}`)
