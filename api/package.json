@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "compile": "tsc ./src/index.ts",
-        "myCommand": "echo 1"
+        "compile-prod": "tsc",
+        "myCommand": "echo 1",
+        "dev": "ts-node ./src/index.ts"
     },
     "author": "",
     "license": "ISC",
