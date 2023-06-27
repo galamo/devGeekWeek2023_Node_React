@@ -2,12 +2,13 @@ import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv"
 import productsRouter from "./products";
 import usersRouter from "./users"
+import cors from "cors"
 import { auth, addRequestId, requestStarted } from "./middleware";
 
 dotenv.config()
 // const express = require("express")
 const app = express()
-
+app.use(cors())
 app.use(requestStarted)
 app.use(addRequestId)
 app.get("/health-check", (req: Request, res: Response, next: NextFunction) => {
