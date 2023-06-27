@@ -14,6 +14,8 @@ app.use(addRequestId)
 app.get("/health-check", (req: Request, res: Response, next: NextFunction) => {
     res.send("Api is running!")
 })
+
+
 app.use(auth)
 app.use("/products", productsRouter)
 app.use("/users", usersRouter)

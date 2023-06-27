@@ -30,24 +30,34 @@ function App() {
         }
         getProducts()
     }, [])
-
+    function handler(e) {
+        setCurrentColor(e.target.value)
+    }
 
     return (
         <>
             <div>
                 {/* {props.color === 'green' ? <span>yes !!</span> : <span> no</span>} */}
-                change color <input onChange={(e) => {
-                    setCurrentColor(e.target.value)
-                }} type='text' />
+                change color <input onChange={handler} type='text' />
                 <Header {...props} />
                 {isProductsLoading ? <Spinner /> : <h1>{currentProducts.length}</h1>}
-                <h2> list </h2>
-                {currentProducts.map(p => {
-                    return <Product title={p.title} price={p.price} image={p.images[0]} />
-                })}
+                <ProductList products={currentProducts} />
             </div>
         </>
     )
+
 }
+
+function ProductList(props: { products: Array<any> }) {
+    return <div>
+        <h2> list </h2>
+        {
+            props.products.map(p => {
+                return <Product title={p.title} price={p.price} image={p.images[0]} />
+            })
+        }
+    </div>
+}
+
 
 export default App
