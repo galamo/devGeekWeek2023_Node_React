@@ -222,3 +222,11 @@ app.listen(3333);
 2. function MyHeader
 3. the component recieve a string header
 4. the component will render a the relevant sting under
+
+
+
+# Next Steps:
+1. Clone the repository
+2. navigate to api folder
+3. Run `npm install`
+4. Run `npm run dev`
