@@ -23,9 +23,11 @@
 3. Create A folder inside devGeekWeek2023 with name: lecture ( `mkdir lecture` )
 4. Create another folder inside devGeekWeek2023 with name: myLab ( `mkdir myLab` )
 5. Structure
-   `---- devGeekWeek2023`
-   `-------- lecture`
-   `-------- myLab`
+
+- devGeekWeek2023
+- - lecture
+- - myLab
+
 6. Navigate into `lecture folder` & clone our repo
 7. Run `git clone  https://github.com/galamo/devGeekWeek2023_Node_React`
 8. each time you want to update your code Run `git pull origin head`
@@ -219,4 +221,4 @@ app.listen(3333);
 1. Create Header component
 2. function MyHeader
 3. the component recieve a string header
-4. the component will render a the relevant sting under <h1> element
+4. the component will render a the relevant sting under
