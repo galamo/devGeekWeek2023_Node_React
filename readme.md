@@ -226,7 +226,7 @@ app.listen(3333);
 
 
 # Next Steps:
-1. Clone the repository
+1. Clone the repository / git pull
 2. navigate to api folder
 3. Run `npm install`
 4. Run `npm run dev`
